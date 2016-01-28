@@ -1,7 +1,29 @@
-def valid_word?(word)
-  # Populate this array with some words of your choosing.
-  dictionary = []
+class Dictionary
+ 
+  DATA = ['table', 'chair', 'desk', 'window', 'door']
 
-  # Return true if your dictionary contains `word`
-  # or false if it does not.
+  def valid_word?(word)
+     DATA.include?(word)
+  end
+  
+  def output_valid(*words)
+    words.select{|word| valid_word?(word)==true}
+  end
+    
+  def string(str)  
+    a =[]
+    DATA.select{|word| 
+      a << str.scan(word).uniq} 
+     return a.flatten
+    
+  end
+    
 end
+
+puts test = Dictionary.new
+puts test.output_valid('chair', 'desk', 'blah')
+
+puts "______*______"
+puts test.string("iouchair99window897wind")
+
+
